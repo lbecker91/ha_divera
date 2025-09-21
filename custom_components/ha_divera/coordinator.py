@@ -10,7 +10,7 @@ class DiveraDataUpdateCoordinator(DataUpdateCoordinator):
             hass,
             _LOGGER,
             name="Divera API",
-            update_interval=timedelta(seconds=5),  # alle 5 Sekunden
+            update_interval=timedelta(seconds=5),  # alle 5 Sekunden prüfen
         )
         self.api_key = api_key
 
