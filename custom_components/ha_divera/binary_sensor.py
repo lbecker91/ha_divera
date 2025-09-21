@@ -5,6 +5,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
     coordinator = hass.data[DOMAIN][entry.entry_id]
     async_add_entities([DiveraAlarmBinarySensor(coordinator)])
 
+
 class DiveraAlarmBinarySensor(BinarySensorEntity):
     _attr_name = "Divera Alarm Aktiv"
 
@@ -13,10 +14,11 @@ class DiveraAlarmBinarySensor(BinarySensorEntity):
 
     @property
     def is_on(self):
+        """Alarm aktiv, wenn mindestens ein Alarm-Item vorhanden ist."""
         if not self.coordinator.data or "data" not in self.coordinator.data:
             return False
-        alarms = self.coordinator.data.get("data", [])
-        return len(alarms) > 0
+        items = self.coordinator.data["data"].get("items", {})
+        return len(items) > 0
 
     async def async_update(self):
         await self.coordinator.async_request_refresh()
