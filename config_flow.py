@@ -1,5 +1,6 @@
 import voluptuous as vol
 from homeassistant import config_entries
+from homeassistant.core import HomeAssistant
 from .const import DOMAIN, CONF_API_KEY
 
 class DiveraConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
@@ -11,7 +12,7 @@ class DiveraConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         if user_input is not None:
             api_key = user_input[CONF_API_KEY]
 
-            # hier könnte man optional einen echten API-Check machen
+            # Optional: Probe-Request, um API-Key zu validieren
             if not api_key or len(api_key) < 10:
                 errors["base"] = "invalid_auth"
             else:

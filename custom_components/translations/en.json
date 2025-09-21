@@ -1,0 +1,19 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Divera 24/7 Setup",
+        "description": "Enter your Divera API key",
+        "data": {
+          "api_key": "API Key"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Invalid API key"
+    },
+    "abort": {
+      "already_configured": "Integration already configured"
+    }
+  }
+}
